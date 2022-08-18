@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 	<meta charset="UTF-8">
@@ -19,8 +19,7 @@
 </head>
 
 <body>
-	<h1>Spring Boot Rest API </h1>
-	<h2>Se pegar vai ser uma mão na Roda!</h2>
+	<h1>Spring Boot Cadastro de Usuário </h1>
 
 	<form id="formCadastroUser">
 		<div class="mb-3">
@@ -46,10 +45,6 @@
 	<button type="button" class="btn btn-success" data-bs-toggle="modal"
 		data-bs-target="#pesquisaModal">Pesquisar</button>
 	<button type="button" class="btn btn-danger" onclick="botaoDeletar()">Deletar</button>
-
-
-
-
 
 	<div class="modal fade" id="pesquisaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -89,16 +84,12 @@
 
 
 
-
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-		<!-- Option 1: Bootstrap Bundle with Popper -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 			crossorigin="anonymous"></script>
-
-
 
 
 		<script type="text/javascript">
@@ -123,12 +114,7 @@
 			}
 
 
-
-
-
 			function colocarEmEdicao(id) {
-
-
 				$.ajax({
 					method: "GET",
 					url: "usuario/buscarUsuario",
@@ -144,9 +130,6 @@
 				}).fail(function (xhr, status, errorThrow) {
 					alert("Error ao Buscar por ID : " + xhr.responseText)
 				})
-
-
-
 			}
 
 
@@ -174,14 +157,12 @@
 					success: function (response) {
 						$("#id").val(response.id)
 						alert("Gravou o Usuário")
-
 					}
 				}).fail(function (xhr, status, errorThrow) {
 					alert("Error ao salvar Usuário : " + xhr.responseText)
 				})
-
-
 			}
+			
 
 			function deleteUsuario(id) {
 				if (confirm('Deseja realmente deletar?')) {
@@ -191,44 +172,35 @@
 						data: "idTest=" + id,
 						success: function (response) {
 							/*Apagando cada liha na tabela 
-							Aqui ele coloca '#'+ id porque o nome da classe é o próprio valor do ID de cada um */
+							Aqui ele coloca '#'+ id porque o id do row para cada linha é o Id do Usuário é o próprio valor do ID de cada um */
 							$('#' + id).remove()
 							//O response ele recebe o próprio retorno do método no Spring
 							alert(response)
 							/*Quando passa o gerElementById direto não coloca o #, coloca o nome direto!*/
 							document.getElementById('formCadastroUser').reset();
-
-							/*formCadastroUser*/
-							//document.getElementById('#formCadastroUser').reset()
-							//$("#id").val(response.id).reset()
-							/*document.getElementById('#nome').reset()
-							document.getElementById('#idade').reset()
-							/*$("#nome").val(response.nome).reset()
-							$("#idade").val(response.idade).reset()*/
 						}
 					}).fail(function (xhr, status, errorThrow) {
 						alert("Error ao Deletar Usuário por Id : " + xhr.responseText)
 					})
 				}
-
 			}
+			
 
 			function botaoDeletar() {
 				var ident = $('#id').val()
+				/*console.log("valor do ID = ",ident)
+				* Verifiquei que como o ID é fornecido automaticamente do Banco de Dados ele não vem Null.
+				* A validação é referente ao formulário vir com '', que não é preenchido.
+				*/
 				if (ident != null && ident.trim() != '') {
 					deleteUsuario(ident)
+				} else {
+					alert('Não há nenhum usuário para deletar, por favor escolha um usuário')
+					return;
 				}
 			}
 
-
 		</script>
-
-
-
-
-
-
-
 </body>
 
 </html>
