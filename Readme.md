@@ -33,12 +33,12 @@ Tecnologias usadas :
 ### Software de Teste
 | Software | Icone |
 |---|---|
-| Postman | <img align="center" alt="Postman" height="30" width="40" src="Resource_CRUD/Postman-icon.SVG"/> |
+| Postman | <img align="center" alt="Postman" height="30" width="40" src="Resource_CRUD/postman-icon.svg"/> |
 
 ## Apresentação do Projeto 🚀🚀
 
-<h3> Tela inicia </h3>
-<img alt="Readme" title="TelaInicial" src="./Tela-inicial.png">
+<h3> Tela inicial </h3>
+<img alt="Readme" title="TelaInicial" src="./Tela-Inicial.png">
 
 ### Criando um usuário
 <h1 align="center">
